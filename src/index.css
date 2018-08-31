@@ -3,3 +3,27 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.app {
+  background-color: aqua;
+}
+
+.header {
+  background-color: brown;
+  height: 100%;
+}
+
+.order {
+  background-color: darkgray;
+  height: 100%;
+}
+
+.inventory {
+  background-color: greenyellow;
+  height: 100%;
+}
+
+.adminPanel {
+  background-color: tan;
+  height: 100%;
+}

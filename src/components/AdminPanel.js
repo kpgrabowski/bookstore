@@ -4,10 +4,12 @@ class AdminPanel extends React.Component {
 
 
     render() {
-        return <div><i>
+        return (<div className="adminPanel col-4">
+            <i>
             Admin
         </i>
         </div>
+        );
     }
 }
 
