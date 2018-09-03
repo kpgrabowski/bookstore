@@ -2,9 +2,46 @@ import React from "react";
 
 class Header extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            bookstoreName: "Black Books",
+            clicked: true,
+            textColor: "white",
+            backgroundColor: "black",
+        }
+    }
+
+    handelClick = () => {
+       if(this.state.clicked) {
+           this.setState({
+               bookstoreName: "White Books",
+               textColor: "black",
+               backgroundColor: "white",
+           })
+       }else {
+           this.setState({
+               bookstoreName: "Black Books",
+               textColor: "white",
+               backgroundColor: "black",
+           })
+       }
+      this.setState({
+          clicked: !this.state.clicked,
+      });
+
+        console.log(this.state.clicked);
+    };
+
     render() {
-        return (<div className="row header ">
-            <h1 className="center">Header</h1>
+
+        let headerCss = {
+            color: this.state.textColor,
+            backgroundColor: this.state.backgroundColor,
+        };
+
+        return (<div className="row header" style={headerCss} onClick={this.handelClick}>
+            <h1>{this.state.bookstoreName}</h1>
         </div>
         );
     }

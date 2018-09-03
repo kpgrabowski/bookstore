@@ -15,11 +15,22 @@ describe('Header test', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('Header renders', () => {
+    it('Header changes text according to state', () => {
         const wrapper = shallow(<Header/>);
         // console.log(wrapper.debug());
-        expect(wrapper.find('h1').text()).toBe('Header');
-    })
+        expect(wrapper.find('h1').text()).toBe("Black Books");
+        wrapper.setState({
+            bookstoreName: "White Books"
+        });
+        expect(wrapper.find('h1').text()).toBe("White Books");
+    });
+
+    it('Header state changes after clicking in header div', () => {
+        const wrapper = shallow(<Header/>);
+        expect(wrapper.state().bookstoreName).toBe('Black Books');
+        wrapper.find('.header').simulate('click');
+        expect(wrapper.state().bookstoreName).toBe('White Books');
+    });
 
 });
 
