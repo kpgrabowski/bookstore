@@ -26,4 +26,5 @@ body {
 .adminPanel {
   background-color: tan;
   height: 100%;
+  padding: 10px;
 }

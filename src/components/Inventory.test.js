@@ -15,6 +15,12 @@ describe('Inventory test', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
+    it('Inventory matches', () => {
+        const wrapper = shallow(<Inventory/>);
+        // console.log(wrapper.debug());
+        expect(wrapper).toMatchSnapshot();
+    })
+
     it('Inventory renders', () => {
         const wrapper = shallow(<Inventory/>);
         // console.log(wrapper.debug());

@@ -15,10 +15,10 @@ describe('AdminPanel test', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('AdminPanel renders', () => {
+    it('SnapShot matches', () => {
         const wrapper = shallow(<AdminPanel/>);
         // console.log(wrapper.debug());
-        expect(wrapper.find('div').text()).toBe('Admin');
+        expect(wrapper).toMatchSnapshot();
     })
 
 });

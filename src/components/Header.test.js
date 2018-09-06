@@ -15,6 +15,12 @@ describe('Header test', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
+    it('Header matches', () => {
+        const wrapper = shallow(<Header/>);
+        // console.log(wrapper.debug());
+        expect(wrapper).toMatchSnapshot();
+    })
+
     it('Header changes text according to state', () => {
         const wrapper = shallow(<Header/>);
         // console.log(wrapper.debug());

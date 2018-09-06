@@ -15,6 +15,12 @@ describe('Order test', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
+    it('Order matches', () => {
+        const wrapper = shallow(<Order/>);
+        // console.log(wrapper.debug());
+        expect(wrapper).toMatchSnapshot();
+    })
+
     it('Order renders', () => {
         const wrapper = shallow(<Order/>);
         // console.log(wrapper.debug());
