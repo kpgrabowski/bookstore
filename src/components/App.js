@@ -12,6 +12,7 @@ class App extends React.Component {
         super();
         this.state = {
             books: [],
+            order: [],
         }
     }
 
@@ -24,12 +25,25 @@ class App extends React.Component {
         })
     };
 
+    addToOrder = (book) => {
+        this.setState({
+            order: [...this.state.order, book]
+        })
+
+};
+
+    removeFromOrder = (title) => {
+        this.setState({
+            order: this.state.order.filter(book => title!==book.name)
+        })
+};
+
     render() {
         return (<div className="app container">
                 <Header/>
                 <div className="row">
                     <Order/>
-                    <Inventory books={this.state.books}/>
+                    <Inventory books={this.state.books} addToOrder={this.addToOrder} removeFromOrder={this.removeFromOrder}/>
                     <AdminPanel books={this.state.books} addBook={this.addNewBook}/>
                 </div>
             </div>
