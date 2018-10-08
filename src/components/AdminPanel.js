@@ -12,13 +12,10 @@ class AdminPanel extends React.Component {
                 onStock: true,
                 image: ""
             },
-            books: [],
-
         };
     };
 
     handleChange = (event) => {
-
 
         let newBook;
 
@@ -42,13 +39,11 @@ class AdminPanel extends React.Component {
 
         event.preventDefault();
 
-        let newBooks = [...this.state.books];
-
         let newBook = {...this.state.book};
 
-        newBooks.push(newBook);
+        this.props.addBook(newBook);
+
         this.setState({
-            books: newBooks,
             book: {
                 name: "",
                 author: "",
