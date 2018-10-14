@@ -12,7 +12,8 @@ class Order extends React.Component {
         const orderBooks = this.props.order.map(order => {
             return <OrderView book={order} removeFromOrder={this.props.removeFromOrder} key={order.id}/>
         });
-        return (<div className="order col-4">
+        return (<div className="order col-6">
+                <h2> Your order: </h2>
                 {orderBooks}
             </div>
         );
