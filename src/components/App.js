@@ -42,8 +42,8 @@ class App extends React.Component {
         return (<div className="app container">
                 <Header/>
                 <div className="row">
-                    <Order/>
-                    <Inventory books={this.state.books} addToOrder={this.addToOrder} removeFromOrder={this.removeFromOrder}/>
+                    <Order order={this.state.order} removeFromOrder={this.removeFromOrder}/>
+                    <Inventory books={this.state.books} addToOrder={this.addToOrder}/>
                     <AdminPanel books={this.state.books} addBook={this.addNewBook}/>
                 </div>
             </div>
