@@ -26,12 +26,12 @@ constructor() {
 
     render() {
 
-        let bookListening= <h4> No books on stock</h4>
+        let bookListening = <h4> No books on stock</h4>
 
         if(Array.isArray(this.state.books)) {
 
-            const bookListening = this.state.books.map(book => {
-                return <BookView book={book} addToOrder={this.props.addToOrder}/>
+            bookListening = this.state.books.map(book => {
+                return <BookView key={book.name} book={book} addToOrder={this.props.addToOrder}/>
             });
         }
 
