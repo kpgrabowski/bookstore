@@ -1,6 +1,5 @@
-import Rebase from  "re-base";
+import Rebase from "re-base";
 import firebase from "firebase";
-
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyC-qmBZWeuknfmmVFLpHjJRuW9HwThNnMs",
@@ -11,7 +10,7 @@ const firebaseApp = firebase.initializeApp({
     messagingSenderId: "802052735652"
 });
 
-const fbase = Rebase.createClass(firebase.database());
+const fbase = Rebase.createClass(firebaseApp.database());
 
 
 export {fbase, firebaseApp};
