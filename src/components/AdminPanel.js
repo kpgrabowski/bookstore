@@ -99,12 +99,12 @@ class AdminPanel extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className= "container">
                 {!this.state.loggedIn &&
-                <form onSubmit={this.authenticate}>
+                <form onSubmit={this.authenticate} className= "formLoggiIn">
                     <input type="text" placeholder="email" id="email_bs" name="email" className="form-control"
                            onChange={this.handleLoginChange} value={this.state.email}/>
-                    <input type="password"  id="password_bs" name="password" className="form-control"
+                    <input type="password" placeholder="password" id="password_bs" name="password" className="form-control"
                            onChange={this.handleLoginChange} value={this.state.password}/>
                     <button type="submit" className="btn btn-primary">Log in</button>
                 </form>

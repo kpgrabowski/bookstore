@@ -29,3 +29,7 @@ body {
 .goToAdmin {
     float: right;
 }
+
+.formLoggiIn {
+    width: 30%;
+}
