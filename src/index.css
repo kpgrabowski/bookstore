@@ -33,3 +33,13 @@ body {
 .formLoggiIn {
     width: 30%;
 }
+
+.LogOut {
+    float: right;
+}
+
+.footer {
+    background-color: darkred;
+    text-decoration-color: black;
+    width: 100%;
+}

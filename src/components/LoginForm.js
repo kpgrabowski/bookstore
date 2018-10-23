@@ -1,5 +1,4 @@
 import React from 'react';
-import {fbase} from '../fbase';
 import {firebaseApp} from "../fbase";
 
 class LoginForm extends React.Component {
