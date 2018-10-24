@@ -39,7 +39,10 @@ body {
 }
 
 .footer {
-    background-color: darkred;
-    text-decoration-color: black;
+    background-color: cornflowerblue;
     width: 100%;
+}
+
+.deleteBook {
+    solid-color: firebrick;
 }
