@@ -11,13 +11,11 @@ class BookForm extends React.Component {
                 name: "",
                 author: "",
                 description: "",
-                genre: "",
                 onStock: true,
                 image: ""
             },
         }
     }
-
 
 
     handleChange = (event) => {
@@ -46,23 +44,9 @@ class BookForm extends React.Component {
 
 
 
-    addNewBook = (event) => {
+    addNewBook = () => {
 
-        event.preventDefault();
-        let newBook = {...this.state.book};
-
-        this.props.addNewBook(newBook);
-
-        this.setState({
-            books: [...this.state.books, newBook],
-            book: {
-                name: "",
-                author: "",
-                description: "",
-                onStock: false,
-                image: ""
-            }
-        });
+       this.props.addNewBook(this.state.book);
     };
 
 
@@ -83,17 +67,17 @@ class BookForm extends React.Component {
                                       className="form-control"
                                       onChange={this.handleChange} value={this.state.book.description}/>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="sel1">Genre (select one):</label><br/>
-                        <select placeholder="Genre" id="genre" name="genre" className="select-picker"
-                                onChange={this.handleChange} value={this.state.book.genre}
-                        >
-                            <option>Horror</option>
-                            <option>Fantastic</option>
-                            <option>Drama</option>
-                            <option>Moral</option>
-                        </select>
-                    </div>
+                    {/*<div className="form-group">*/}
+                        {/*<label htmlFor="sel1">Genre (select one):</label><br/>*/}
+                        {/*<select placeholder="Genre" id="genre" name="genre" className="select-picker"*/}
+                                {/*onChange={this.handleChange} value={this.state.book.genre}*/}
+                        {/*>*/}
+                            {/*<option>Horror</option>*/}
+                            {/*<option>Fantastic</option>*/}
+                            {/*<option>Drama</option>*/}
+                            {/*<option>Moral</option>*/}
+                        {/*</select>*/}
+                    {/*</div>*/}
                     <div className="form-group" style={{marginLeft: "20px"}}>
                         <input type="checkbox" id="onStock" name="onStock" className="form-check-input"
                                onChange={this.handleChange} value={this.state.book.onStock}/>

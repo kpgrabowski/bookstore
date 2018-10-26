@@ -9,8 +9,7 @@ class AdminPanel extends React.Component {
     constructor() {
         super();
         this.state = {
-            books: [],
-            loggedIn: false,
+            loggedIn: true,
         };
     };
 
@@ -33,11 +32,13 @@ class AdminPanel extends React.Component {
         firebaseApp.auth().signOut()
     };
 
-    addNewBook = (book) => this.setState({books: [...this.state.books, book]});
+    addNewBook = (book) => {
+        this.setState({books: [...this.state.books, book]});
+    };
 
-    removeFromOrder = (title) => {
+    removeFromInventory = (title) => {
         this.setState({
-            order: this.state.order.filter(book => title!==book.name)
+            books: this.state.books.filter(book => title!==book.name)
         })
     };
 
@@ -56,7 +57,7 @@ class AdminPanel extends React.Component {
 
                 <div>
                     <BookForm addNewBook={this.addNewBook} />
-                    <AdminBookListing books={this.state.books} removeFromOrder={this.props.removeFromOrder} />
+                    <AdminBookListing books={this.state.books} removeFromInventory={this.removeFromInventory} />
                     <button className="LogOut" onClick={this.logout}>LOGOUT</button>
                 </div>
 

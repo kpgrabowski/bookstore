@@ -1,4 +1,5 @@
 import React from 'react';
+import AdminBookView from "./AdminBookView";
 
 class AdminBookListing extends React.Component {
 
@@ -7,24 +8,17 @@ class AdminBookListing extends React.Component {
           }
 
 
+
+
     render() {
 
-            let list;
+            let list = <div> No books in state</div>
 
-            if(this.props.books) {
-                list = <ol>{this.props.books.map((book) => <div>
-                    <li key={book.name}>{book.name}<br/>{book.author}</li>
-                    <button key={book.id}
-                            className="deleteBook"
-                            onClick={(event) =>this.props.removeFromOrder(this.props.book.name)}
-                            >
-                        Delete Book
-                    </button>
-                    </div>
-                )}</ol>
-            }else{
-                list = <div> No books in state</div>
-        }
+            if(Array.isArray(this.props.books)) {
+                list = this.props.books.map((book) => {
+                   return <AdminBookView key={book.name} book={book} removeFromInventory={this.props.removeFromInventory}/>
+                })
+            }
         return (
             <div>
                 {list}
