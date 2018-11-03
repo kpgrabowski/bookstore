@@ -17,7 +17,6 @@ describe('Order test', () => {
 
     it('Order matches', () => {
         const wrapper = shallow(<Order/>);
-        // console.log(wrapper.debug());
         expect(wrapper).toMatchSnapshot();
     })
 

@@ -9,7 +9,9 @@ class AdminPanel extends React.Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: true,
+            loggedIn: false,
+            editMode: false,
+            bookToEdit: {},
         };
     };
 
@@ -33,7 +35,11 @@ class AdminPanel extends React.Component {
     };
 
     addNewBook = (book) => {
-        this.setState({books: [...this.state.books, book]});
+        this.setState({
+            books: [...this.state.books, book],
+            editMode: false,
+            bookToEdit: {},
+        });
     };
 
     removeFromInventory = (title) => {
@@ -41,6 +47,26 @@ class AdminPanel extends React.Component {
             books: this.state.books.filter(book => title!==book.name)
         })
     };
+
+    sendBookToEdit = (bookToEdit) => {
+
+            this.setState({
+              editMode: true,
+                bookToEdit: bookToEdit
+            });
+        console.log(this.state.editMode);
+        };
+
+    editBook = (oldBookTitle, bookAfterEdit) => {
+
+        const newBooks = this.state.books.filter(book => oldBookTitle!==book.name);
+        this.setState({
+            books: [...newBooks, bookAfterEdit],
+            editMode: false,
+            bookToEdit: {},
+        });
+    };
+
 
 
     render() {
@@ -56,9 +82,16 @@ class AdminPanel extends React.Component {
                 {this.state.loggedIn &&
 
                 <div>
-                    <BookForm addNewBook={this.addNewBook} />
-                    <AdminBookListing books={this.state.books} removeFromInventory={this.removeFromInventory} />
-                    <button className="LogOut" onClick={this.logout}>LOGOUT</button>
+                    <BookForm addNewBook = {this.addNewBook}
+                              editMode = {this.state.editMode}
+                              book = {this.state.bookToEdit}
+                              editBook = {this.editBook}
+                    />
+                    <AdminBookListing books = {this.state.books}
+                                      removeFromInventory = {this.removeFromInventory}
+                                      sendBookToEdit = {this.sendBookToEdit}
+                    />
+                    <button className="LogOut" onClick = {this.logout}>LOGOUT</button>
                 </div>
 
                 }

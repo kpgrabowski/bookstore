@@ -10,12 +10,20 @@ class AdminBookView extends React.Component {
     render() {
         return (
             <div className="orderView row">
-                <div>
+                <div className="col-xs-8">
                     <span>{this.props.book.name} {this.props.book.author}</span>
                 </div>
-                <div>
-                    <button className="btn btn-danger LogOut" onClick={(event) =>
-                        this.props.removeFromInventory(this.props.book.name)}>Remove</button>
+                <div className="col-xs-2">
+                    <button  className="btn btn-danger LogOut" onClick={(event) =>
+                        this.props.removeFromInventory(this.props.book.name)}>
+                        Remove
+                    </button>
+                </div>
+                <div className="col-xs-2">
+                    <button className="btn btn-primary" onClick={(event) =>
+                        this.props.sendBookToEdit(this.props.book)}>
+                        Edit
+                    </button>
                 </div>
             </div>
         )

@@ -17,7 +17,6 @@ describe('Inventory test', () => {
 
     it('Inventory matches', () => {
         const wrapper = shallow(<Inventory/>);
-        // console.log(wrapper.debug());
         expect(wrapper).toMatchSnapshot();
     })
 

@@ -31,7 +31,6 @@ class Header extends React.Component {
           clicked: !this.state.clicked,
       });
 
-        console.log(this.state.clicked);
     };
 
     render() {
