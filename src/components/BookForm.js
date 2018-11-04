@@ -7,19 +7,26 @@ class BookForm extends React.Component {
     constructor() {
         super();
         this.state = {
-            book: {},
+            book: {
+                name: "",
+                author: "",
+                description: "",
+                onStock: true,
+                image: "",
+            },
         }
     }
+
 
 
     handleChange = (event) => {
 
         let newBook;
 
-        if (event.target.name === "onStock") {
+        if(event.target.name==="onStock") {
             newBook = {
                 ...this.state.book,
-                [event.target.name]: !event.target.checked
+                [event.target.name]: event.target.checked
             };
         } else {
             newBook = {
@@ -31,8 +38,6 @@ class BookForm extends React.Component {
         this.setState({
             book: newBook
         });
-
-
     };
 
 
@@ -47,7 +52,13 @@ class BookForm extends React.Component {
 
             this.props.addNewBook(newBook);
             this.setState({
-                book: {},
+                book: {
+                    name: "",
+                    author: "",
+                    description: "",
+                    onStock: true,
+                    image: "",
+                },
             });
         } else {
             const newBook = {
@@ -56,7 +67,13 @@ class BookForm extends React.Component {
             };
             this.props.editBook(this.props.book.name, newBook);
             this.setState({
-                book: {},
+                book: {
+                    name: "",
+                    author: "",
+                    description: "",
+                    onStock: true,
+                    image: "",
+                },
             });
         }
         event.target.reset();
@@ -83,17 +100,6 @@ class BookForm extends React.Component {
                                       className="form-control"
                                       onChange={this.handleChange} value={this.state.book.description || this.props.book.description}/>
                     </div>
-                    {/*<div className="form-group">*/}
-                        {/*<label htmlFor="sel1">Genre (select one):</label><br/>*/}
-                        {/*<select placeholder="Genre" id="genre" name="genre" className="select-picker"*/}
-                                {/*onChange={this.handleChange} value={this.state.book.genre}*/}
-                        {/*>*/}
-                            {/*<option>Horror</option>*/}
-                            {/*<option>Fantastic</option>*/}
-                            {/*<option>Drama</option>*/}
-                            {/*<option>Moral</option>*/}
-                        {/*</select>*/}
-                    {/*</div>*/}
                     <div className="form-group" style={{marginLeft: "20px"}}>
                         <input type="checkbox" id="onStock" name="onStock" className="form-check-input"
                                onChange={this.handleChange} value={this.state.book.onStock || this.props.book.onStock}/>
