@@ -11,6 +11,7 @@ class BookForm extends React.Component {
                 name: "",
                 author: "",
                 description: "",
+                price: "",
                 onStock: true,
                 image: "",
             },
@@ -24,6 +25,7 @@ class BookForm extends React.Component {
         let newBook;
 
         if(event.target.name==="onStock") {
+            console.log(event.target.name);
             newBook = {
                 ...this.state.book,
                 [event.target.name]: event.target.checked
@@ -56,6 +58,7 @@ class BookForm extends React.Component {
                     name: "",
                     author: "",
                     description: "",
+                    price: "",
                     onStock: true,
                     image: "",
                 },
@@ -71,6 +74,7 @@ class BookForm extends React.Component {
                     name: "",
                     author: "",
                     description: "",
+                    price: "",
                     onStock: true,
                     image: "",
                 },
@@ -99,6 +103,11 @@ class BookForm extends React.Component {
                             <textarea placeholder="Book description" id="description" name="description"
                                       className="form-control"
                                       onChange={this.handleChange} value={this.state.book.description || this.props.book.description}/>
+                    </div>
+                    <div className="form-group">
+                            <input placeholder="Book price (PLN)" id="price" name="price"
+                                      className="form-control"
+                                      onChange={this.handleChange} value={this.state.book.price || this.props.book.price}/>
                     </div>
                     <div className="form-group" style={{marginLeft: "20px"}}>
                         <input type="checkbox" id="onStock" name="onStock" className="form-check-input"

@@ -8,7 +8,8 @@ export default class BookView extends React.Component {
                 <div className="col-6">
                     <b>{this.props.book.name}</b><br/>
                     <i>{this.props.book.author}</i><br/>
-                    <p>{this.props.book.description}</p>
+                    <p>{this.props.book.description}</p><br/>
+                    <p>{this.props.book.price}</p>
                 </div>
                 <div className="col-6">
                     <button className="btn btn-primary" onClick={(event) =>this.props.addToOrder(this.props.book)}>
