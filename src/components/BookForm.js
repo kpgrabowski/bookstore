@@ -1,8 +1,7 @@
 import React from 'react';
-import {fbase} from "../fbase";
+import {connect} from 'react-redux';
 
-
-class BookForm extends React.Component {
+class AddBookForm extends React.Component {
 
     constructor() {
         super();
@@ -93,30 +92,30 @@ class BookForm extends React.Component {
                 <form onSubmit={this.addNewBook}>
                     <div className="form-group">
                         <input type="text" placeholder="Book name" id="name" name="name" className="form-control"
-                               onChange={this.handleChange} value={this.state.book.name || this.props.book.name}/>
+                               onChange={this.handleChange} value={this.props.book.name}/>
                     </div>
                     <div className="form-group">
                         <input type="text" placeholder="Book author" id="author" name="author" className="form-control"
-                               onChange={this.handleChange} value={this.state.book.author || this.props.book.author}/>
+                               onChange={this.handleChange} value={this.props.book.author}/>
                     </div>
                     <div className="form-group">
                             <textarea placeholder="Book description" id="description" name="description"
                                       className="form-control"
-                                      onChange={this.handleChange} value={this.state.book.description || this.props.book.description}/>
+                                      onChange={this.handleChange} value={this.props.book.description}/>
                     </div>
                     <div className="form-group">
                             <input placeholder="Book price (PLN)" id="price" name="price"
                                       className="form-control"
-                                      onChange={this.handleChange} value={this.state.book.price || this.props.book.price}/>
+                                      onChange={this.handleChange} value={this.props.book.price}/>
                     </div>
                     <div className="form-group" style={{marginLeft: "20px"}}>
                         <input type="checkbox" id="onStock" name="onStock" className="form-check-input"
-                               onChange={this.handleChange} value={this.state.book.onStock || this.props.book.onStock}/>
+                               onChange={this.handleChange} value={this.props.book.onStock}/>
                         <label htmlFor="onStock" className="form-check-label">On stock</label>
                     </div>
                     <div className="form-group">
                         <input type="text" placeholder="Book image" id="image" name="image" className="form-control"
-                               onChange={this.handleChange} value={this.state.book.image || this.props.book.image}/>
+                               onChange={this.handleChange} value={this.props.book.image}/>
                     </div>
                     <button type="submit" className="btn btn-primary">{label}</button>
                 </form>
@@ -127,6 +126,15 @@ class BookForm extends React.Component {
 
 
 }
+
+const mapStateToProps = state => {
+    return {
+       book: state.book
+    }
+};
+
+
+const BookForm = connect(mapStateToProps)(AddBookForm);
 
 export default BookForm;
 
