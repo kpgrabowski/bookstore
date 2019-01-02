@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-class AdminBookView extends React.Component {
+class BookView extends React.Component {
 
     constructor() {
         super();
@@ -32,5 +33,18 @@ class AdminBookView extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {}
+};
+const mapDispatchToProps = (dispatch) => {
+    return{
+        sendBookToEdit: (book) => dispatch({
+            type: 'SEND_BOOK_TO_EDIT',
+            payload: book
+        })
+    }
+};
+
+const AdminBookView = connect(mapStateToProps, mapDispatchToProps)(BookView);
 
 export default AdminBookView;

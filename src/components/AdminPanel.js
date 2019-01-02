@@ -10,15 +10,6 @@ class AdminPanel extends React.Component {
         super();
         this.state = {
             loggedIn: false,
-            editMode: false,
-            bookToEdit: {
-                name: "",
-                author: "",
-                description: "",
-                price: "",
-                onStock: true,
-                image: "",
-            },
         };
     };
 
@@ -44,15 +35,6 @@ class AdminPanel extends React.Component {
     addNewBook = (book) => {
         this.setState({
             books: [...this.state.books, book],
-            editMode: false,
-            bookToEdit: {
-                name: "",
-                author: "",
-                description: "",
-                price: "",
-                onStock: true,
-                image: "",
-            },
         });
     };
 
@@ -62,29 +44,12 @@ class AdminPanel extends React.Component {
         })
     };
 
-    sendBookToEdit = (bookToEdit) => {
-
-            this.setState({
-              editMode: true,
-                bookToEdit: bookToEdit
-            });
-        console.log(this.state.editMode);
-        };
 
     editBook = (oldBookTitle, bookAfterEdit) => {
 
         const newBooks = this.state.books.filter(book => oldBookTitle!==book.name);
         this.setState({
             books: [...newBooks, bookAfterEdit],
-            editMode: false,
-            bookToEdit: {
-                name: "",
-                author: "",
-                description: "",
-                price: "",
-                onStock: true,
-                image: "",
-            },
         });
     };
 
@@ -104,13 +69,11 @@ class AdminPanel extends React.Component {
 
                 <div>
                     <BookForm addNewBook = {this.addNewBook}
-                              editMode = {this.state.editMode}
-                              book = {this.state.bookToEdit}
                               editBook = {this.editBook}
                     />
                     <AdminBookListing books = {this.state.books}
                                       removeFromInventory = {this.removeFromInventory}
-                                      sendBookToEdit = {this.sendBookToEdit}
+
                     />
                     <button className="LogOut" onClick = {this.logout}>LOGOUT</button>
                 </div>

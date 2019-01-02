@@ -19,7 +19,7 @@ class AdminBookListing extends React.Component {
                    return <AdminBookView key={book.name}
                                          book={book}
                                          removeFromInventory={this.props.removeFromInventory}
-                                         sendBookToEdit={this.props.sendBookToEdit}
+
                    />
                 })
             }

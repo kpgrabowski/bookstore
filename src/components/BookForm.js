@@ -3,19 +3,7 @@ import {connect} from 'react-redux';
 
 class AddBookForm extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            book: {
-                name: "",
-                author: "",
-                description: "",
-                price: "",
-                onStock: true,
-                image: "",
-            },
-        }
-    }
+
 
 
 
@@ -26,19 +14,17 @@ class AddBookForm extends React.Component {
         if(event.target.name==="onStock") {
             console.log(event.target.name);
             newBook = {
-                ...this.state.book,
+                ...this.props.book,
                 [event.target.name]: event.target.checked
             };
         } else {
             newBook = {
-                ...this.state.book,
+                ...this.props.book,
                 [event.target.name]: event.target.value
             };
         }
 
-        this.setState({
-            book: newBook
-        });
+       this.props.updateBook(newBook);
     };
 
 
@@ -49,34 +35,28 @@ class AddBookForm extends React.Component {
 
         if(!this.props.editMode) {
 
-            const newBook = {...this.state.book};
+            const newBook = {...this.props.book};
 
             this.props.addNewBook(newBook);
-            this.setState({
-                book: {
+            this.props.updateBook({
                     name: "",
                     author: "",
                     description: "",
                     price: "",
                     onStock: true,
                     image: "",
-                },
             });
         } else {
-            const newBook = {
-                ...this.props.book,
-                ...this.state.book,
-            };
-            this.props.editBook(this.props.book.name, newBook);
-            this.setState({
-                book: {
-                    name: "",
-                    author: "",
-                    description: "",
-                    price: "",
-                    onStock: true,
-                    image: "",
-                },
+            const newBook = {...this.props.book};
+
+            this.props.editBook(this.props.titleOfBookForRemoval, newBook);
+            this.props.updateBook({
+                name: "",
+                author: "",
+                description: "",
+                price: "",
+                onStock: true,
+                image: "",
             });
         }
         event.target.reset();
@@ -127,14 +107,22 @@ class AddBookForm extends React.Component {
 
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        updateBook: book => dispatch({type: 'UPDATE_BOOK', payload: book}),
+    }
+};
+
 const mapStateToProps = state => {
     return {
-       book: state.book
+        book: state.book,
+        editMode: state.editMode,
+        titleOfBookForRemoval: state.titleOfBookForRemoval,
     }
 };
 
 
-const BookForm = connect(mapStateToProps)(AddBookForm);
+const BookForm = connect(mapStateToProps,mapDispatchToProps)(AddBookForm);
 
 export default BookForm;
 
