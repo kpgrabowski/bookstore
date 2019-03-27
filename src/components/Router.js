@@ -1,10 +1,10 @@
 import React from "react";
-import {Provider} from 'react-redux';
 import App from "./App";
 import AdminPanel from "./AdminPanel";
 import PageNotFound from "./PageNotFound";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import store from '../store/store';
+import {Provider} from "react-redux";
 
 class Router extends React.Component {
 
