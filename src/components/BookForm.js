@@ -4,10 +4,6 @@ import {connect} from "react-redux";
 
 class AddBookForm extends React.Component {
 
-
-
-
-
     handleChange = (event) => {
 
         let newBook;
@@ -24,7 +20,6 @@ class AddBookForm extends React.Component {
                 [event.target.name]: event.target.value
             };
         }
-
        this.props.updateBook(newBook);
     };
 
